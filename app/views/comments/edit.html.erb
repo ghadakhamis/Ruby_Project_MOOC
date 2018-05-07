@@ -1,0 +1,12 @@
+<%= form_for ([@lecture, @comment]) do |form| %>
+  
+    <div class="field">
+      <%= form.label :comment %>
+      <%= form.text_area :comment, id: :comment_comment %>
+    </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  
+  <% end %> 
+  <%= link_to "Back", lecture_path(@lecture) %>

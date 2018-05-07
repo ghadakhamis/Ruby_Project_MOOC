@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_lecture, only: [:create]
-  before_action :set_comment, only: [:destroy]
+  before_action :set_comment, only: [:destroy, :edit]
 
   def create
     @comment = Comment.new(comment_params) 
@@ -16,6 +17,31 @@ class CommentsController < ApplicationController
     end      
   end
   
+  def edit
+
+  end
+
+  def update
+    @comment=Comment.find(params[:id])
+    @lecture= Lecture.find(params[:lecture_id])
+    if current_user.id ==@comment.user_id
+      respond_to do |format|
+        if @comment.update(comment_params)
+          format.html { redirect_to lecture_path(@lecture), notice: 'comment was successfully updated.' }
+        else
+          format.html { render :edit }
+        end
+      end
+    else
+      respond_to do |format|
+        if @comment.update(comment_params)
+          format.html { redirect_to lecture_path(@lecture), notice: 'Not the owner of the comment.' }
+        end
+      end  
+    end  
+  end  
+
+
   def destroy
     if @comment.destroy
       respond_to do |format|
