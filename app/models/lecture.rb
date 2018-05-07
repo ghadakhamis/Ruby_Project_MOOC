@@ -1,8 +1,10 @@
 class Lecture < ApplicationRecord
-   # validation 
-   validates :attachment, presence: true
+  # validation 
+  validates :attachment, :course_id, presence: true
+ 
   # association relations
   belongs_to :course
+  has_many :comments
 
   # make attachment belongs to Uploader
   mount_uploader :attachment, AttachmentUploader

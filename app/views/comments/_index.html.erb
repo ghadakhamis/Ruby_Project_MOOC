@@ -1,0 +1,14 @@
+<h3>Comments</h3>
+<% @comments.each do |comment| %>
+
+  <p>
+    <strong><%= comment.user.name%> :</strong>
+    <%= comment.comment %>
+    <% if current_user == comment.user %>
+    <%= link_to 'Destroy', lecture_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </p>
+
+<% end %> 
+<%= render 'comments/form' %>
+   

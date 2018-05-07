@@ -14,6 +14,8 @@
   <strong>Course:</strong>
   <%= @lecture.course.title %>
 </p>
+
+<%= render 'comments/index' %>
 <% if current_user.id == @lecture.course.user_id%>
   <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
 <% end %>

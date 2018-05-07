@@ -12,6 +12,7 @@ class User < ApplicationRecord
   
   # association relations
   has_many :courses
+  has_many :comments
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

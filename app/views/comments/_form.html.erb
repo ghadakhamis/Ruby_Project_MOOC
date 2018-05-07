@@ -1,0 +1,11 @@
+<%= form_for ([@lecture, @lecture.comments.build ]) do |form| %>
+  
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :comment, id: :lecture_comment %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>    
