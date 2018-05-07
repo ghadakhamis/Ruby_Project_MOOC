@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {minimum:3, maximum:250}
   validates :date_of_birth, :gender, presence: true
 
-  # make image belongs to Uploader
+  # make profile picture belongs to Uploader
   mount_uploader :profile_picture, ProfilePictureUploader
 
   # determine values to gender field 

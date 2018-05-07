@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @lecture.content %>
+</p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%= link_to @lecture.attachment.url %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @lecture.course.title %>
+</p>
+<% if current_user.id == @lecture.course.user_id%>
+  <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
+<% end %>
+<%= link_to 'Back', lectures_path %>

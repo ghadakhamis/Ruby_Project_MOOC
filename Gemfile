@@ -16,6 +16,8 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
 # Use carrierwave for image update
 gem 'carrierwave', '~> 1.0'
+# Use cancan for authorization
+#gem 'cancancan', '~> 1.9'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

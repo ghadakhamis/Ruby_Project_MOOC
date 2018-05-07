@@ -7,8 +7,9 @@
 
 <p>
   <strong>User:</strong>
-  <%= @course.user_id %>
+  <%= @course.user.name %>
 </p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
+<% if current_user == @course.user%>
+  <%= link_to 'Edit', edit_course_path(@course) %> |
+<% end %>  
 <%= link_to 'Back', courses_path %>
