@@ -1,5 +1,6 @@
 
 class User < ApplicationRecord
+  acts_as_voter
   # validation 
   validates :name, presence: true, length: {minimum:3, maximum:250}
   validates :date_of_birth, :gender, presence: true

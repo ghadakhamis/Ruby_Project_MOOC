@@ -1,6 +1,6 @@
 class LecturesController < InheritedResources::Base
   before_action :authenticate_user!
-  before_action :set_lecture, only: [:show, :edit, :update, :destory]
+  before_action :set_lecture, only: [:show, :edit, :update, :destory, :like]
 
   def index
     @lectures = Lecture.includes(:course).all
@@ -27,6 +27,17 @@ class LecturesController < InheritedResources::Base
       end  
     end  
   end 
+
+  def like
+    if !current_user.liked? @lecture
+      @lecture.liked_by current_user
+    else
+      @lecture.unliked_by current_user
+    end
+    respond_to do |format|
+      format.html {redirect_to lecture_path(@lecture)}
+    end   
+  end  
    
   private
 
@@ -36,6 +47,7 @@ class LecturesController < InheritedResources::Base
 
     def set_lecture
       @lecture = Lecture.find(params[:id])
+      @likes= @lecture.get_likes.size 
     end  
     
 end

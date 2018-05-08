@@ -16,6 +16,8 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
 # Use carrierwave for image update
 gem 'carrierwave', '~> 1.0'
+# Use act_as_votable for voting 
+gem 'acts_as_votable', '~> 0.11.1'
 # Use cancan for authorization
 #gem 'cancancan', '~> 1.9'
 # Use Puma as the app server

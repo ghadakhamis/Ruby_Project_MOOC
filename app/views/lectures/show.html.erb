@@ -14,7 +14,10 @@
   <strong>Course:</strong>
   <%= @lecture.course.title %>
 </p>
-
+<%= link_to like_lecture_path(@lecture), class: "like-btn", method: :put, remote: :true do%>
+    <span><i class="fa fa-thumbs-up fa-3x">like</i></span>
+<% end %>  
+<span class="likes-count"><%= @likes%></span>
 <%= render 'comments/index' %>
 <% if current_user.id == @lecture.course.user_id%>
   <%= link_to 'Edit', edit_lecture_path(@lecture) %> |

@@ -1,4 +1,5 @@
 class Lecture < ApplicationRecord
+  acts_as_votable
   # validation 
   validates :attachment, :course_id, presence: true
  
