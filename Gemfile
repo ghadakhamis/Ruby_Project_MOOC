@@ -11,13 +11,17 @@ gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use activeadmin for admin area
-gem 'activeadmin', '~> 1.0.0.pre2' 
+gem 'activeadmin', '~> 1.1.0' 
 # Use devise for  uesrs login and register
 gem 'devise'
 # Use carrierwave for image update
 gem 'carrierwave', '~> 1.0'
 # Use act_as_votable for voting 
 gem 'acts_as_votable', '~> 0.11.1'
+# Use ckeditor
+gem 'ckeditor_rails'
+# Use mini_magick for image size
+gem 'mini_magick'
 # Use cancan for authorization
 #gem 'cancancan', '~> 1.9'
 # Use Puma as the app server
