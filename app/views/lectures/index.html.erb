@@ -16,7 +16,7 @@
     <% @lectures.each do |lecture| %>
       <tr>
         <td><%= lecture.content %></td>
-        <td><%= link_to lecture.attachment.url %></td>
+        <td><%=  lecture.attachment.url %></td>
         <td><%= lecture.course.title %></td>
         <td><%= link_to 'Show', lecture %></td>
         <% if current_user.id ==lecture.course.user_id  %>
