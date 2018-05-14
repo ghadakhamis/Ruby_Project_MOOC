@@ -4,7 +4,9 @@ ActiveAdmin.register Lecture do
     selectable_column
     id_column
     column :content
-    column :attachment 
+    column :attachment do |lecture|
+      link_to "Download", lecture.attachment.url
+    end    
     column :course
     column :created_at
     column :updated_at
@@ -12,15 +14,18 @@ ActiveAdmin.register Lecture do
     actions
   end
 
-  show do |user|
+  show do |lecture|
     attributes_table do
       row :content 
-      row :attachment
+      row :attachment do 
+        link_to "Download", lecture.attachment.url
+      end    
       row :course
       row :created_at
-      row :updated_at  
+      row :updated_at   
       row :cached_votes_total
     end   
+    active_admin_comments   
   end 
 
   form do |form|

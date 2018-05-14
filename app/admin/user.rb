@@ -8,7 +8,7 @@ ActiveAdmin.register User do
     column :gender
     column :date_of_birth
     column :profile_picture do |user|
-      image_tag user.profile_picture.url if user.profile_picture?
+      image_tag user.profile_picture.url, size: "60x60" if user.profile_picture?
     end
     column :created_at
     actions
@@ -16,13 +16,13 @@ ActiveAdmin.register User do
 
   show do |user|
     attributes_table do
+      row :profile_picture do
+        image_tag user.profile_picture.url, size: "140x140" if user.profile_picture?
+      end 
       row :name  
       row :email
       row :gender
-      row :date_of_birth
-      row :profile_picture do
-        image_tag user.profile_picture.url if user.profile_picture?
-      end  
+      row :date_of_birth 
       row :created_at
       row :updated_at
       row :last_sign_in_at

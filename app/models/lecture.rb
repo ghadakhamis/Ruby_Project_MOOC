@@ -6,6 +6,9 @@ class Lecture < ApplicationRecord
   # association relations
   belongs_to :course
   has_many :comments
+  has_many :users, through: :comments
+  has_and_belongs_to_many :users   
+
 
   # make attachment belongs to Uploader
   mount_uploader :attachment, AttachmentUploader

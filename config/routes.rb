@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   root 'home#index'
 
   resources :lectures do
    resources :comments
    member do 
-    put 'like'
+    put :like
+    get :flag
    end 
   end
   resources :courses

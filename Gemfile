@@ -19,7 +19,9 @@ gem 'carrierwave', '~> 1.0'
 # Use act_as_votable for voting 
 gem 'acts_as_votable', '~> 0.11.1'
 # Use ckeditor
-gem 'ckeditor_rails'
+gem 'ckeditor'
+gem 'paperclip'
+gem 'dragonfly'
 # Use mini_magick for image size
 gem 'mini_magick'
 # Use cancan for authorization

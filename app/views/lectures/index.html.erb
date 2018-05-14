@@ -15,10 +15,13 @@
   <tbody>
     <% @lectures.each do |lecture| %>
       <tr>
-        <td><%= lecture.content %></td>
+        <td><%= raw lecture.content %></td>
         <td><%=  lecture.attachment.url %></td>
         <td><%= lecture.course.title %></td>
         <td><%= link_to 'Show', lecture %></td>
+        <% if !current_user.lectures.include? lecture%>
+          <td><%= link_to 'Mark Span', flag_lecture_path(lecture) %></td>
+        <% end %>
         <% if current_user.id ==lecture.course.user_id  %>
           <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
           <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,6 +1,6 @@
 class LecturesController < InheritedResources::Base
   before_action :authenticate_user!
-  before_action :set_lecture, only: [:show, :edit, :update, :destory, :like]
+  before_action :set_lecture, only: [:show, :edit, :update, :destory, :like, :flag]
 
   def index
     @lectures = Lecture.includes(:course).all
@@ -39,6 +39,19 @@ class LecturesController < InheritedResources::Base
     end   
   end  
    
+
+  def flag
+    if !current_user.lectures.include? @lecture
+      current_user.lectures << @lecture
+      respond_to do |format|
+        format.html { redirect_to lectures_url, notice: 'lecture successfully flaged.' }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to lectures_url, notice: 'lecture already in flaged.' }
+      end
+    end   
+  end  
   private
 
     def lecture_params
