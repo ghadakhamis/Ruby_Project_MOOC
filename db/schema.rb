@@ -71,16 +71,46 @@ ActiveRecord::Schema.define(version: 20180514121805) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "lectures" because of following StandardError
-#   Unknown type 'attachment' for column 'attachment'
+  create_table "lectures", force: :cascade do |t|
+    t.text "content"
+    t.string "attachment"
+    t.integer "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
+  end
 
   create_table "lectures_users", force: :cascade do |t|
     t.integer "lecture_id"
     t.integer "user_id"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'attachment' for column 'profile_picture'
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.date "date_of_birth"
+    t.integer "gender"
+    t.string "profile_picture"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
 
   create_table "votes", force: :cascade do |t|
     t.string "votable_type"

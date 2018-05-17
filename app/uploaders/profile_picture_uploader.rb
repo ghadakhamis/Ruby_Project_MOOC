@@ -34,11 +34,9 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
   end
   version :small do
     process resize_to_fit: [150, 150]
-    process :quality => 100
   end
   version :medium do
     process resize_to_fit: [200, 200]
-    process :quality => 100
   end
 
 
