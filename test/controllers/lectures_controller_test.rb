@@ -7,12 +7,12 @@ class LecturesControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get lectures_url
-    assert_response :success
+    assert_response 302
   end
 
   test "should get new" do
     get new_lecture_url
-    assert_response :success
+    assert_response 302
   end
 
   test "should create lecture" do
@@ -25,12 +25,12 @@ class LecturesControllerTest < ActionDispatch::IntegrationTest
 
   test "should show lecture" do
     get lecture_url(@lecture)
-    assert_response :success
+    assert_response 302
   end
 
   test "should get edit" do
     get edit_lecture_url(@lecture)
-    assert_response :success
+    assert_response 302
   end
 
   test "should update lecture" do
