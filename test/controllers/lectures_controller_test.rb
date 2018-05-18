@@ -1,18 +1,19 @@
 require 'test_helper'
 
 class LecturesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::ControllerHelpers
   setup do
     @lecture = lectures(:one)
   end
 
   test "should get index" do
     get lectures_url
-    assert_response 302
+    assert_response :success
   end
 
   test "should get new" do
     get new_lecture_url
-    assert_response 302
+    assert_response :success
   end
 
   test "should create lecture" do
@@ -25,12 +26,12 @@ class LecturesControllerTest < ActionDispatch::IntegrationTest
 
   test "should show lecture" do
     get lecture_url(@lecture)
-    assert_response 302
+    assert_response :success
   end
 
   test "should get edit" do
     get edit_lecture_url(@lecture)
-    assert_response 302
+    assert_response :success
   end
 
   test "should update lecture" do
