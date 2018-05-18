@@ -16,7 +16,7 @@
     <% @lectures.each do |lecture| %>
       <tr>
         <td><%= raw lecture.content %></td>
-        <td><%=  lecture.attachment.url %></td>
+        <td><%= link_to 'Download', lecture.attachment.url %></td>
         <td><%= lecture.course.title %></td>
         <td><%= link_to 'Show', lecture %></td>
         <% if !current_user.lectures.include? lecture%>
