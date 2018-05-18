@@ -1,25 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+<div class="row">
+  <div class="col-md-3 col-md-offset-3"><h1 class="text-center">Lecture</h1></div>
+</div>
+<div class="row "> 
+  <div class="col-md-9 col-md-offset-1"></div>
+  <div class="col-md-1">
+    <%= link_to like_lecture_path(@lecture), class: "btn btn-outline-info btn-xs", method: :put, remote: :true do%>
+      <span><i class="glyphicon glyphicon-thumbs-up"><span class="likes-count"><%= @likes %></span> like</i></span>
+    <% end %>
+  </div>
+  <div class="col-md-1 ">
+    <% if current_user.id == @lecture.course.user_id%>
+      <%= link_to 'Edit', edit_lecture_path(@lecture),:class => "button btn btn-primary btn-xs"%> 
+    <% end %>
+  </div>  
+  <div class="col-md-1 "><%= link_to 'Back', lectures_path,:class => "button btn btn-info btn-xs" %></div>
+</div>
+<p id="notice" class="alert alert-info"><%= notice %></p>
+ 
+<div class="card-body">
+<div class="row">
+  <div class="col-md-1"><strong class="text-center">Content</strong></div>
+  <div class="col-md-11"><%= raw @lecture.content %></div>
+</div> 
+</div>
+<table class="table">
+  <tbody>
+    <tr>
+      <td>Course</td>
+      <td><%=@lecture.course.title %></td>
+    </tr>
+    <tr>
+      <td>Attachment</td>
+      <td><%= link_to 'Download', @lecture.attachment.url, :class => "button btn btn-outline-info btn-xs" %></td>
+    </tr>
+  </tbody>
+</table>      
 
-<p>
-  <strong>Content:</strong>
-  <%= raw @lecture.content %>
-</p>
-
-<p>
-  <strong>Attachment:</strong>
-  <%= link_to 'Download', @lecture.attachment.url %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @lecture.course.title %>
-</p>
-<%= link_to like_lecture_path(@lecture), class: "like-btn", method: :put, remote: :true do%>
-    <span><i class="fa fa-thumbs-up fa-3x">like</i></span>
-<% end %>  
-<span class="likes-count"><%= @likes%></span>
 <%= render 'comments/index' %>
-<% if current_user.id == @lecture.course.user_id%>
-  <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
-<% end %>
-<%= link_to 'Back', lectures_path %>
+

@@ -1,11 +1,13 @@
 <%= form_for ([@lecture, @lecture.comments.build ]) do |form| %>
   
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment, id: :comment_comment %>
+  <div class="field form-group">
+    <%= form.label :comment, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= form.text_area :comment, id: :comment_comment, class: 'form-control' %>
+    </div>  
   </div>
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field form-group">
+    <%= submit_tag 'Save', class: "btn  btn-primary btn-xs" %>
   </div>
 
 <% end %>    

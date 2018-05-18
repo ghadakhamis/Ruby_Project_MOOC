@@ -1,15 +1,20 @@
+<%= render 'comments/form' %>
 <h3>Comments</h3>
 <% @comments.each do |comment| %>
 
-  <p>
-    <strong><%= comment.user.name%> :</strong>
-    <%= comment.comment %>
+  <div class="row alert alert-info">
+    <div class="col-md-5">
+      <strong ><%= comment.user.name%></strong> 
+      <%= comment.comment %>
+    </div>
     <% if current_user == comment.user %>
-      <%= link_to 'Edit', edit_lecture_comment_path(comment) %>    
-      <%= link_to 'Destroy', lecture_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="col-md-1">
+        <%= link_to 'Edit', edit_lecture_comment_path(comment), :class => "button btn btn-primary btn-xs" %>  
+      </div>
+      <div class="col-md-1">    
+        <%= link_to 'Destroy', lecture_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "button btn btn-danger btn-xs" %>
+      </div>
     <% end %>
-  </p>
-
+  </div>        
 <% end %> 
-<%= render 'comments/form' %>
    
