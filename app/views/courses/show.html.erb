@@ -9,6 +9,24 @@
   <strong>User:</strong>
   <%= @course.user.name %>
 </p>
+<p> 
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Lecture</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @course.lectures.each do |lecture| %>
+      <tr>
+        <td><%= lecture.id%></td>
+        <td><%=link_to "lecture", lecture_url(lecture) %></td>
+      </tr>  
+    <% end %>
+    </tbody>
+  </table>    
+</p>
 <% if current_user == @course.user%>
   <%= link_to 'Edit', edit_course_path(@course) %> |
 <% end %>  
