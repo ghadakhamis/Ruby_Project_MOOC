@@ -1,6 +1,6 @@
 class LecturesController < InheritedResources::Base
   before_action :authenticate_user!
-  before_action :set_lecture, only: [:show, :edit, :update, :destory, :like, :flag]
+  before_action :set_lecture, only: [:show, :edit, :update, :destroy, :like, :flag]
 
   def index
     @lectures = Lecture.includes(:course).all
