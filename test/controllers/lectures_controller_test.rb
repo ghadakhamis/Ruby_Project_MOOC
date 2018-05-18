@@ -7,16 +7,19 @@ class LecturesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
+    sign_in users(:one)
     get lectures_url
     assert_response :success
   end
 
   test "should get new" do
+    sign_in users(:one)
     get new_lecture_url
     assert_response :success
   end
 
   test "should create lecture" do
+    sign_in users(:one)
     assert_difference('Lecture.count') do
       post lectures_url, params: { lecture: { attachment: @lecture.attachment, content: @lecture.content, course_id: @lecture.course_id } }
     end
@@ -25,21 +28,25 @@ class LecturesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show lecture" do
+    sign_in users(:one)
     get lecture_url(@lecture)
     assert_response :success
   end
 
   test "should get edit" do
+    sign_in users(:one)
     get edit_lecture_url(@lecture)
     assert_response :success
   end
 
   test "should update lecture" do
+    sign_in users(:one)
     patch lecture_url(@lecture), params: { lecture: { attachment: @lecture.attachment, content: @lecture.content, course_id: @lecture.course_id } }
     assert_redirected_to lecture_url(@lecture)
   end
 
   test "should destroy lecture" do
+    sign_in users(:one)
     assert_difference('Lecture.count', -1) do
       delete lecture_url(@lecture)
     end
