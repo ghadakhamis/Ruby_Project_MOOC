@@ -34,7 +34,17 @@ ActiveAdmin.register Lecture do
       row :spams do
         lecture.users.count()
       end  
-    end   
+    end  
+        lecture.comments.each do |comment|
+          attributes_table do
+            row :user do 
+              comment.user
+            end
+            row :comment do 
+               comment.comment
+            end  
+          end  
+        end   
     active_admin_comments   
   end 
 
