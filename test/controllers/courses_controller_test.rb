@@ -1,15 +1,9 @@
 require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::ControllerHelpers
+  include Devise::Test::IntegrationHelpers
   setup do
     @course = courses(:one)
-  end
-
-  test "should get index" do
-    sign_in users(:one)
-    get courses_url
-    assert_response :success
   end
 
   test "should get new" do
@@ -18,30 +12,20 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create course" do
-    assert_difference('Course.count') do
-      post courses_url, params: { course: { title: @course.title, user_id: @course.user_id } }
-    end
-
-    assert_redirected_to course_url(Course.last)
-  end
-
-  test "should show course" do
-    get course_url(@course)
-    assert_response :success
-  end
-
   test "should get edit" do
+    sign_in users(:one)
     get edit_course_url(@course)
     assert_response :success
   end
 
   test "should update course" do
+    sign_in users(:one)
     patch course_url(@course), params: { course: { title: @course.title, user_id: @course.user_id } }
-    assert_redirected_to course_url(@course)
+    assert_response :success
   end
 
   test "should destroy course" do
+    sign_in users(:one)
     assert_difference('Course.count', -1) do
       delete course_url(@course)
     end

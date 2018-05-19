@@ -1,35 +1,14 @@
 require 'test_helper'
 
 class LecturesControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::ControllerHelpers
+  include Devise::Test::IntegrationHelpers
   setup do
     @lecture = lectures(:one)
-  end
-
-  test "should get index" do
-    sign_in users(:one)
-    get lectures_url
-    assert_response :success
   end
 
   test "should get new" do
     sign_in users(:one)
     get new_lecture_url
-    assert_response :success
-  end
-
-  test "should create lecture" do
-    sign_in users(:one)
-    assert_difference('Lecture.count') do
-      post lectures_url, params: { lecture: { attachment: @lecture.attachment, content: @lecture.content, course_id: @lecture.course_id } }
-    end
-
-    assert_redirected_to lecture_url(Lecture.last)
-  end
-
-  test "should show lecture" do
-    sign_in users(:one)
-    get lecture_url(@lecture)
     assert_response :success
   end
 
@@ -42,7 +21,7 @@ class LecturesControllerTest < ActionDispatch::IntegrationTest
   test "should update lecture" do
     sign_in users(:one)
     patch lecture_url(@lecture), params: { lecture: { attachment: @lecture.attachment, content: @lecture.content, course_id: @lecture.course_id } }
-    assert_redirected_to lecture_url(@lecture)
+    assert_response :success
   end
 
   test "should destroy lecture" do

@@ -4,8 +4,14 @@ one:
   content: MyString
   attachment: MyString
   course_id: 1
+  course: 
+    title: title
+    user_id: 1 
 
 two:
   content: MyString
   attachment: MyString
-  course_id: 1
+  course_id: 2
+  course: 
+    title: title
+    user_id: 1 
