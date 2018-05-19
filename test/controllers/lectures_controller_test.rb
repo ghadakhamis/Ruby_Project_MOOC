@@ -32,4 +32,9 @@ class LecturesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to lectures_url
   end
+  test "should like lecture" do
+    sign_in users(:one)
+    put like_lecture_url(@lecture)
+    assert_redirected_to lecture_url(@lecture)
+  end  
 end
